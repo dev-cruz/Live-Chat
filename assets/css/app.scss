@@ -2,6 +2,16 @@
 @import "./phoenix.css";
 @import "../node_modules/nprogress/nprogress.css";
 
+:root {
+  --primary-green: #1ebea5;
+  --background-green: #dcf8c6;
+  --primary-gray: #EBEBEB;
+  --secondary-gray: #F5F5F5;
+  --icon-gray: #919191;
+  --primary-font: #303030;
+  --secondary-font: #7C7C7C;
+}
+
 /* LiveView specific classes for your customizations */
 .invalid-feedback {
   color: #a94442;
