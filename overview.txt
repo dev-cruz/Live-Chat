@@ -1,0 +1,52 @@
+O que é o projeto?
+  Uma aplicação web de conversas que terá autenticação com github.
+
+Tecnologias:
+  - Phoenix;
+  - Phoenix Live View;
+  - Postgres;
+
+Requisitos:
+  - A aplicação deverá ter uma landing page que explicará brevemente as
+    funcionalidades do projeto e terá um botão para o usuário se autenticar com
+o github;
+  - O usuário pode se autenticar com o github;
+  - O usuário pode a qualquer momento deslogar de sua conta;
+  - O usuário pode somente visualizar a página de conversas se estiver logado;
+  - Na página de conversas, o usuário poderá iniciar uma conversa com outro
+    usuário pesquisando seu perfil através de seu email;
+  - Caso um usuário seja encontrado, ele deverá aparecer na lista de conversas
+    que o usuário pesquisou. Caso contrário, um flash deve aparecer na tela
+dizendo que não existe um usuário com o email que foi pesquisado;
+  - As conversas do usuário serão ordenadas pelas mais recentes;
+
+Regras para o git:
+  - Caso exija mudanças no código, criar uma branch para a task e abrir um pull
+    request na branch next-release;
+  - Manter na master a versão da aplicação funcionando (sem bugs);
+  - Merge master somente quando ocorrer um bug que necessita ser corrigido com
+    urgência. Após o merge da correção, atualizar a branch next-release;
+
+Labels para tasks:
+  - Code: task exige código;
+  - Doc: task apenas de diagrama e/ou prototipação;
+  - Fix: task que foi gerada através de um bug;
+  - Technical Debt: task que exigirá refatoração de código por conta de uma
+    funcionalidade implementada as pressas para criar o MVP;
+  - New Feature: task que irá adicionar uma nova funcionalidade;
+
+Workflow:
+  - Backlog de tasks;
+  - Tasks para fazer durante a semana;
+  - Task in progress: em andamento;
+  - Able to merge: Task situada na branch next-release;
+  - Merged: Task colocada na branch master;
+  - To fix: Task na branch master porém gerou um bug que deve ser corrigido;
+  - Resolved: Finalizada;
+
+Tasks iniciais:
+  - Definir ERD do software;
+  - Desenhar o fluxo dos dados em cima do protótipo da interface;
+  - Criar a autenticação do usuário;
+  - Criar as regras do design;
+  - Criar uma versão simples e inicial da página de conversas;
