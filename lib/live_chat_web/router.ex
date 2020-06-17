@@ -20,6 +20,13 @@ defmodule LiveChatWeb.Router do
     live "/", PageLive, :index
   end
 
+  scope "/auth", LiveChatWeb do
+    pipe_through :browser
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", LiveChatWeb do
   #   pipe_through :api
