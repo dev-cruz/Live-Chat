@@ -2,6 +2,7 @@ defmodule LiveChatWeb.Router do
   use LiveChatWeb, :router
 
   pipeline :browser do
+    plug Ueberauth
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
