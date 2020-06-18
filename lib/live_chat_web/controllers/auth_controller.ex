@@ -1,6 +1,8 @@
 defmodule LiveChatWeb.AuthController do
   use LiveChatWeb, :controller
 
+  alias LiveChat.Accounts.User
+
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, params) do
     user = %{
       token: auth.credentials.token,
@@ -9,6 +11,8 @@ defmodule LiveChatWeb.AuthController do
       image: auth.info.image
     }
 
-    IO.inspect user
+    changeset = User.changeset(%User{}, user)
+
+    IO.inspect changeset
   end
 end
