@@ -9,6 +9,7 @@ defmodule LiveChatWeb.Router do
     plug :put_root_layout, {LiveChatWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug LiveChatWeb.Plugs.SetUser
   end
 
   pipeline :api do
@@ -18,12 +19,17 @@ defmodule LiveChatWeb.Router do
   scope "/", LiveChatWeb do
     pipe_through :browser
 
+    get "/", HomeController, :index
+  end
+
+  scope "/chat", LiveChatWeb do
     live "/", PageLive, :index
   end
 
   scope "/auth", LiveChatWeb do
     pipe_through :browser
 
+    get "/signout", AuthController, :signout
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
   end

@@ -1,0 +1,7 @@
+<h1>This is home</h1>
+
+<%= if @conn.assigns[:user] do %>
+  <%= link "Signout", to: Routes.auth_path(@conn, :signout) %>
+<% else %>
+  <%= link "Login", to: Routes.auth_path(@conn, :request, "github") %>
+<% end %>
