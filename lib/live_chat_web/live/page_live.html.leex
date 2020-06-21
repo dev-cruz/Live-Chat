@@ -1,49 +1,29 @@
-<section class="phx-hero">
-  <h1>Welcome to live chat <%= @user.name %></h1>
-
-  <form phx-change="suggest" phx-submit="search">
-    <input type="text" name="q" value="<%= @query %>" placeholder="Live dependency search" list="results" autocomplete="off"/>
-    <datalist id="results">
-      <%= for {app, _vsn} <- @results do %>
-        <option value="<%= app %>"><%= app %></option>
-      <% end %>
-    </datalist>
-    <button type="submit" phx-disable-with="Searching...">Go to Hexdocs</button>
-  </form>
-</section>
-
-<section class="row">
-  <button phx-click="add">add</button>
-  <span><%= @num %></span>
-  <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.5/CHANGELOG.md">v1.5 Changelog</a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-      <li>
-        <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
-      </li>
-    </ul>
-  </article>
-</section>
+<div class="chats-page d-flex justify-content-center align-items-center">
+  <div class="chats-page__chats-wrapper d-flex justify-content-start">
+    <section class="chats-wrapper__section d-flex flex-column justify-content-start">
+      <div class="section__header d-flex justify-content-start align-items-center px-3">
+        <div class="header__user-info d-flex justify-content-start align-items-center">
+          <div class="avatar-wrapper">
+            <img src="<%= @user.image %>" alt="user-avatar" class="user-avatar">
+          </div>
+          <h1 class="chats-heading mx-2"><%= @user.name %></h1>
+        </div>
+      </div>
+      <div class="section__search-bar">
+        <form phx-submit="search_user" class="search-bar__form d-flex justify-content-center align-items-center" autocomplete="off">
+          <input type="text" name="query" value="" placeholder="Search or start a new conversation" class="live_chat-input search-user">
+        </form>
+      </div>
+      <div class="section__chats-list d-flex flex-column justify-content-start align-items-center">
+        <%= if @chats do %>
+          <span>Has chats</span>
+        <% else %>
+          <p class="no-chats-message">You don't have any chat yet.</p>
+        <% end %>
+      </div>
+    </section>
+    <div class="chats-wrapper__content d-flex flex-column justify-content-start align-items-center">
+      <%= live_component @socket, LiveChatWeb.ChatLive, id: @user.id, user: @user %>
+    </div>
+  </div>
+</div>
