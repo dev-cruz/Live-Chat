@@ -12,6 +12,10 @@ defmodule LiveChatWeb.Router do
     plug LiveChatWeb.Plugs.SetUser
   end
 
+  pipeline :auth do
+    plug LiveChatWeb.Plugs.RequireAuth
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -23,6 +27,9 @@ defmodule LiveChatWeb.Router do
   end
 
   scope "/chat", LiveChatWeb do
+    pipe_through :browser
+    pipe_through :auth
+
     live "/", PageLive, :index
   end
 
