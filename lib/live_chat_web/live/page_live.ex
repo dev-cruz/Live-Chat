@@ -2,8 +2,9 @@ defmodule LiveChatWeb.PageLive do
   use LiveChatWeb, :live_view
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, query: "", results: %{})}
+  def mount(_params, %{"user" => user}, socket) do
+    IO.inspect get_connect_info(socket)
+    {:ok, assign(socket, query: "", results: %{}, user: user, number: 0)}
   end
 
   @impl true
@@ -23,6 +24,13 @@ defmodule LiveChatWeb.PageLive do
          |> put_flash(:error, "No dependencies found matching \"#{query}\"")
          |> assign(results: %{}, query: query)}
     end
+  end
+
+  def handle_event("add", %{"num" => num}, socket) do
+    IO.puts num
+
+    socket = socket.assign(number: 10)
+    {:noreply, socket}
   end
 
   defp search(query) do
