@@ -1,6 +1,7 @@
 /* This file is for your main application css. */
 @import "./phoenix.css";
 @import "../node_modules/nprogress/nprogress.css";
+@import "./chats_page.css";
 
 :root {
   --primary-green: #1ebea5;
@@ -11,15 +12,32 @@
   --primary-font: #303030;
   --secondary-font: #7C7C7C;
   --heading-size: 16px;
-  --font-size: 114px;
+  --font-size: 14px;
   --light-font: 300;
   --medium-font: 400;
   --semi-bold-font: 600;
   --bold-font: 700;
+  --border: solid 1px rgba(0, 0, 0, .08);
+  --background: #f8f9fa;
 }
 
 * {
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.live_chat-input {
+  border: none;
+  border-radius: 20px;
+  height: 80%;
+  outline: none;
+  padding-left: 15px;
 }
 
 /* LiveView specific classes for your customizations */
@@ -108,4 +126,11 @@
 }
 .alert:empty {
   display: none;
+}
+
+.main-container {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
 }

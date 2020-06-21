@@ -1,0 +1,85 @@
+.chats-page {
+  background-color: var(--primary-green) !important;
+  color: var(--primary-font);
+  height: 100%;
+  width: 100%;
+}
+
+.chats-page__chats-wrapper {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+.chats-wrapper__section {
+  border-right: var(--border);
+  width: 35%;
+  height: 100%;
+}
+
+.section__header {
+  background-color: var(--primary-gray);
+  height: 8%;
+  width: 100%;
+}
+
+.header__user-info {
+  height: 100%;
+  width: 50%;
+}
+
+.avatar-wrapper {
+  height: 45px;
+  width: 45px;
+}
+
+.user-avatar {
+  border-radius: 50%;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.chats-heading {
+  font-size: var(--heading-size);
+  font-weight: var(--bold-font);
+  margin: 0;
+}
+
+.section__search-bar {
+  background-color: var(--primary-gray);
+  border: var(--border);
+  height: 6%;
+  width: 100%;
+}
+
+.search-bar__form {
+  height: 100%;
+  width: 100%;
+}
+
+.search-user {
+  width: 95%;
+}
+
+.section__chats-list {
+  height: 100%;
+  width: 100%;
+}
+
+.no-chats-message {
+  color: var(--secondary-font);
+  margin: auto;
+}
+
+.chats-wrapper__content {
+  background-color: var(--background);
+  height: 100%;
+  width: 65%;
+}
+
+@media(min-width: 1400px) {
+  .chats-page__chats-wrapper {
+    height: calc(100% - 38px);
+    width: 1200px;
+  }
+}
