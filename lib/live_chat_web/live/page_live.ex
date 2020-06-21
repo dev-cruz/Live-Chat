@@ -3,8 +3,9 @@ defmodule LiveChatWeb.PageLive do
 
   @impl true
   def mount(_params, %{"user" => user}, socket) do
-    IO.inspect get_connect_info(socket)
-    {:ok, assign(socket, query: "", results: %{}, user: user, number: 0)}
+    socket = assign(socket, query: "", results: %{}, user: user, num: 0)
+    IO.puts connected?(socket)
+    {:ok, socket}
   end
 
   @impl true
@@ -26,10 +27,10 @@ defmodule LiveChatWeb.PageLive do
     end
   end
 
-  def handle_event("add", %{"num" => num}, socket) do
-    IO.puts num
+  def handle_event("add", _value, socket) do
+    new_num = socket.assigns.num + 1
 
-    socket = socket.assign(number: 10)
+    socket = assign(socket, num: new_num)
     {:noreply, socket}
   end
 

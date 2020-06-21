@@ -1,6 +1,5 @@
 <section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>Peace-of-mind from prototype to production</p>
+  <h1>Welcome to live chat <%= @user.name %></h1>
 
   <form phx-change="suggest" phx-submit="search">
     <input type="text" name="q" value="<%= @query %>" placeholder="Live dependency search" list="results" autocomplete="off"/>
@@ -14,8 +13,8 @@
 </section>
 
 <section class="row">
-  <button phx-click="add" phx-value-num="2">add</button>
-  <span><% @user.name %></span>
+  <button phx-click="add">add</button>
+  <span><%= @num %></span>
   <article class="column">
     <h2>Resources</h2>
     <ul>
