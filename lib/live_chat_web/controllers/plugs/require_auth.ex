@@ -11,8 +11,7 @@ defmodule LiveChatWeb.Plugs.RequireAuth do
     case conn.assigns[:user] do
       nil ->
         conn
-        |> put_flash(:error, "You need to be logged in")
-        |> redirect(to: Routes.home_path(conn, :index))
+        |> redirect(to: Routes.auth_path(conn, :request, "github"))
         |> halt()
 
       user -> conn
