@@ -1,9 +1,9 @@
 defmodule LiveChatWeb.HomeController do
   use LiveChatWeb, :controller
+  alias LiveChat.Accounts.User
 
-  def index(conn, _params) do
-    IO.inspect(conn.assigns)
+  def index(%{assigns: %{user: user}} = conn, _params) do
 
-    render(conn, "index.html")
+    render(conn, "index.html", user: user)
   end
 end

@@ -1,7 +1,106 @@
-<h1>This is home</h1>
-
-<%= if @conn.assigns[:user] do %>
-  <%= link "Signout", to: Routes.auth_path(@conn, :signout) %>
-<% else %>
-  <%= link "Login", to: Routes.auth_path(@conn, :request, "github") %>
-<% end %>
+<div class="home d-flex flex-column align-items-center">
+  <header class="d-flex justify-content-center align-items-center">
+    <div class="header__content d-flex justify-content-between align-items-center">
+      <div class="content__logo-content d-flex justify-content-around align-items-center">
+        <img src="<%= Routes.static_path(@conn, "/images/logo.svg") %>" alt="logo" height="40px" width="50px">
+        <h1 class="logo-content__title">Live Chat</h1>
+      </div>
+      <nav class="content__navigation d-flex justify-content-around align-items-center">
+        <a href="https://github.com/dev-cruz/Live-Chat" target="_blank" class="header-link">
+          <i class="fa fa-github navigation__github-icon"></i>
+        </a>
+        <ul class="navigation__links d-flex justify-content-between align-items-center">
+          <li class="links__link">
+            <a href="#about" class="header-link">About</a>
+          </li>
+          <li class="links__link">
+            <a href="#contact" class="header-link">Contact</a>
+          </li>
+          <li>
+            <%= if @user != nil do %>
+            <%= link "Sign Out", to: Routes.auth_path(@conn, :signout), class: "header-link" %>
+            <% else %>
+            <%= link "Sign In", to: Routes.auth_path(@conn, :request, "github"), class: "header-link" %>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="home__content">
+    <div class="content__card d-flex justify-content-around align-items-center">
+      <div class="card__image-wrapper">
+        <img src="<%= Routes.static_path(@conn, "/images/landing-image.svg") %>" alt="presentation">
+      </div>
+      <div class="card__description align-self-start">
+        <h2 class="description__title">Live Chat</h2>
+        <p class="description__text">
+          A live chat based on whatsapp web interface and built with Phoenix Framework.
+        </p>
+        <%= link "Get started", to: "/chat", class: "btn" %>
+      </div>
+    </div>
+    <div id="about" class="content__card d-flex justify-content-around align-items-center">
+      <div class="card__description align-self-start">
+        <h2 class="description__title">About</h2>
+        <p class="description__text">
+          This project is made only for learning purpose. The idea was to build something
+          to improve my skills as a web developer and add a real life project to my portfolio.
+        </p>
+        <p class="description__text">
+          Since I've been studying Elixir and the <a href="https://phoenixframework.org/" target="_blank" class="live_chat-link">Phoenix Framework</a>,
+          and Elixir is a good choice
+          for real-time or Websockets applications, I choose it for this project.
+        </p>
+      </div>
+      <div class="card__image-wrapper">
+        <img src="<%= Routes.static_path(@conn, "/images/about-image.svg") %>" alt="presentation">
+      </div>
+    </div>
+    <div id="contact" class="content__card d-flex justify-content-around align-items-center">
+      <div class="card__image-wrapper">
+        <img src="<%= Routes.static_path(@conn, "/images/contact-image.svg") %>" alt="presentation">
+      </div>
+      <div class="card__description align-self-start">
+        <h2 class="description__title">Contact</h2>
+        <p class="description__text">
+          You can contact me by:
+        </p>
+        <ul>
+          <li>Sending me a email at <a href="mailto:joaovictorcruz82@gmail.com" class="live_chat-link">joaovictorcruz82@gmail.com</a></li>
+          <li>My <a href="https://www.linkedin.com/in/jo%C3%A3o-victor-cruz-10a4b7189/" target="_blank" class="live_chat-link">LinkedIn Profile</a></li>
+          <li>Feel free to explore my <a href="https://github.com/dev-cruz" target="_blank" class="live_chat-link">Github Repositories</a></li>
+        </ul>
+        <p class-"description__text">
+          Or you can <a href="#message" class="live_chat-link">send me a message</a>.
+        </p>
+      </div>
+    </div>
+    <div id="message" class="content__card d-flex justify-content-around align-items-center">
+      <div class="card__description align-self-start">
+        <h2 class="description__title">Message</h2>
+        <form class="description__message-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" name="email" class="form-control" id="email">
+          </div>
+          <div class="form-group">
+            <label for="message-area">Message</label>
+            <textarea name="name" rows="5" cols="30" class="form-control" id="text-area"></textarea>
+          </div>
+          <button type="submit" name="submit" class="btn">Send</button>
+        </form>
+      </div>
+      <div class="card__image-wrapper">
+        <img src="<%= Routes.static_path(@conn, "/images/message-image.svg") %>" alt="presentation">
+      </div>
+    </div>
+  </div>
+  <footer class="home__footer d-flex align-items-center justify-content-center">
+    <span>Made with <i class="fa fa-heart"></i> by João Cruz</span>
+  </footer>
+</div>
