@@ -15,3 +15,5 @@ A live chat based on whatsapp web interface and built with Phoenix Framework.
   ```
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+
+Checkout my [Trello board](https://trello.com/b/89TRHcd1) to see what I'm working on.
